@@ -1,0 +1,6 @@
+# Claude Code設定（リポジトリに含めない）
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db

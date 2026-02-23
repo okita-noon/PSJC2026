@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSJC2026 - PEN SPINNING JAPAN CUP 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Shippori+Mincho+B1:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="nav-logo">
+        <span class="logo-text">PSJC<span class="logo-year">2026</span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">概要</a></li>
+        <li><a href="#schedule">スケジュール</a></li>
+        <li><a href="#rules">ルール</a></li>
+        <li><a href="#judges">審査員</a></li>
+        <li><a href="#entry">チーム</a></li>
+        <li><a href="#videos">動画</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ヒーロー -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <!-- hero画像: 許可取得後に差し替え予定 -->
+    <div class="hero-img-wrap"></div>
+    <div class="hero-content">
+      <p class="hero-sub">PEN SPINNING JAPAN CUP</p>
+      <h1 class="hero-title">PSJC<span>2026</span></h1>
+      <p class="hero-desc">六人一組の団体戦<br>日本最大級のペン回しオンライン全国大会</p>
+      <div class="hero-badges">
+        <span class="badge">オンライン開催</span>
+        <span class="badge">団体戦</span>
+        <span class="badge">全国大会</span>
+      </div>
+      <a href="#about" class="btn btn-primary">大会概要を見る</a>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- 概要 -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">大会概要<span class="title-en">ABOUT</span></h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <span class="about-label">大会形式</span>
+          <h3>六人一組・団体戦</h3>
+          <p>6人1組の団体戦オンライン全国大会。1人の選手が複数チームでエントリーすることはできません。各ラウンドでチームから代表者3名が出場し、2勝したチームがマッチの勝利となります。</p>
+        </div>
+        <div class="about-card">
+          <span class="about-label">進出・表彰</span>
+          <h3>予選上位8チームが決勝へ</h3>
+          <p>予選上位<strong class="highlight">8チーム</strong>が決勝トーナメントへ進出。予選→1回戦→準決勝→決勝の最大4ラウンドを戦います。優勝・準優勝チームが表彰されます。</p>
+        </div>
+        <div class="about-card about-card--spotlight">
+          <div class="spotlight-deco" aria-hidden="true">采</div>
+          <div class="spotlight-body">
+            <span class="about-label">見どころ</span>
+            <h3>采配の読み合いが観戦の醍醐味</h3>
+            <p>全メンバーは優勝までに<strong>2ラウンドの出場義務</strong>があるため、エースの温存は禁物。相手の布陣を読みながら<strong>誰をどの試合に投入するか</strong> — その駆け引きと心理戦が、このチーム戦最大の面白さです。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 動画ギャラリー -->
+  <section id="videos" class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">動画<span class="title-en">VIDEOS</span></h2>
+
+      <!-- フィルターUI -->
+      <div class="vg-filters">
+        <!-- ラウンドタブ -->
+        <div class="vg-round-tabs" id="roundTabs">
+          <button class="vg-tab active" data-round="all">すべて</button>
+          <button class="vg-tab" data-round="予選">予選</button>
+          <button class="vg-tab" data-round="1回戦">1回戦</button>
+          <button class="vg-tab" data-round="準決勝">準決勝</button>
+          <button class="vg-tab" data-round="決勝">決勝</button>
+        </div>
+        <!-- チームフィルター (JSで自動生成) -->
+        <div class="vg-team-filters" id="teamFilters"></div>
+      </div>
+
+      <!-- 動画グリッド (JSで自動生成) -->
+      <div class="vg-grid" id="videoGrid"></div>
+      <p class="vg-empty" id="videoEmpty">動画はまだ公開されていません</p>
+    </div>
+  </section>
+
+  <!-- スケジュール -->
+  <section id="schedule" class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">スケジュール<span class="title-en">SCHEDULE</span></h2>
+      <!-- アコーディオン形式: JSで現在フェーズを自動展開 -->
+      <div class="schedule-accordion" id="scheduleAccordion">
+
+        <!-- 予選 -->
+        <div class="sc-panel" data-phase="qualifying" data-start="2026-01-16" data-end="2026-03-13">
+          <button class="sc-header" aria-expanded="false">
+            <span class="sc-phase-name">予選</span>
+            <span class="sc-phase-date">1月16日 〜 3月14日</span>
+            <span class="sc-phase-badge"></span>
+            <span class="sc-chevron">›</span>
+          </button>
+          <div class="sc-body">
+            <div class="sc-judges-row">
+              <span class="sc-judge-badge sc-judge-all">全審査員が採点</span>
+              <span class="sc-judge-badge">plum.</span>
+              <span class="sc-judge-badge">anarchy</span>
+              <span class="sc-judge-badge">葉脈</span>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item done">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>1月16日（金）</time>
+                  <h3>エントリー受付開始</h3>
+                  <p>チーム代表者がJapEn Board内の専用スレッドへ返信</p>
+                </div>
+              </div>
+              <div class="timeline-item done">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>2月7日（土）</time>
+                  <h3>審査ポイント公開・予選動画提出開始</h3>
+                  <p>各審査員の評価基準が公開され、動画の提出が可能に</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>2月28日（土）<span class="tag-deadline">締切</span></time>
+                  <h3>エントリー・予選動画提出期限</h3>
+                  <p>期限後の提出は理由を問わず一切不可。Dropboxにて提出。</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>3月14日（土）</time>
+                  <h3>予選審査結果発表・決勝T進出チーム発表</h3>
+                  <p>予選の審査結果と決勝トーナメント進出チームを発表</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1回戦 -->
+        <div class="sc-panel" data-phase="round1" data-start="2026-03-14" data-end="2026-04-14">
+          <button class="sc-header" aria-expanded="false">
+            <span class="sc-phase-name">決勝トーナメント — 1回戦</span>
+            <span class="sc-phase-date">3月14日 〜 4月15日</span>
+            <span class="sc-phase-badge"></span>
+            <span class="sc-chevron">›</span>
+          </button>
+          <div class="sc-body">
+            <div class="sc-judges-row">
+              <span class="sc-judge-badge">第1試合: plum.</span>
+              <span class="sc-judge-badge">第2試合: anarchy</span>
+              <span class="sc-judge-badge">第3試合: 葉脈</span>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>3月18日（水）<span class="tag-deadline">申告締切</span></time>
+                  <h3>出場者申告締切</h3>
+                  <p>各チームが出場選手を申告</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>4月5日（日）<span class="tag-deadline">提出締切</span></time>
+                  <h3>動画提出締切</h3>
+                  <p>未提出は不戦敗扱い</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>4月15日（水）</time>
+                  <h3>審査結果発表</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 準決勝 -->
+        <div class="sc-panel" data-phase="semifinal" data-start="2026-04-15" data-end="2026-05-19">
+          <button class="sc-header" aria-expanded="false">
+            <span class="sc-phase-name">決勝トーナメント — 準決勝</span>
+            <span class="sc-phase-date">4月15日 〜 5月20日</span>
+            <span class="sc-phase-badge"></span>
+            <span class="sc-chevron">›</span>
+          </button>
+          <div class="sc-body">
+            <div class="sc-judges-row">
+              <span class="sc-judge-badge">第1試合: plum.</span>
+              <span class="sc-judge-badge">第2試合: anarchy</span>
+              <span class="sc-judge-badge">第3試合: 葉脈</span>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>4月19日（日）<span class="tag-deadline">申告締切</span></time>
+                  <h3>出場者申告締切</h3>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>5月10日（日）<span class="tag-deadline">提出締切</span></time>
+                  <h3>動画提出締切</h3>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>5月20日（水）</time>
+                  <h3>審査結果発表</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 決勝 -->
+        <div class="sc-panel" data-phase="final" data-start="2026-05-20" data-end="2026-06-25">
+          <button class="sc-header" aria-expanded="false">
+            <span class="sc-phase-name">決勝トーナメント — 決勝</span>
+            <span class="sc-phase-date">5月20日 〜 6月24日</span>
+            <span class="sc-phase-badge"></span>
+            <span class="sc-chevron">›</span>
+          </button>
+          <div class="sc-body">
+            <div class="sc-judges-row">
+              <span class="sc-judge-badge">第1試合: plum.</span>
+              <span class="sc-judge-badge">第2試合: anarchy</span>
+              <span class="sc-judge-badge">第3試合: 葉脈</span>
+            </div>
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>5月24日（日）<span class="tag-deadline">申告締切</span></time>
+                  <h3>出場者申告締切</h3>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>6月14日（日）<span class="tag-deadline">提出締切</span></time>
+                  <h3>動画提出締切</h3>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <time>6月24日（水）</time>
+                  <h3>審査結果発表・大会終了</h3>
+                  <p>PSJC2026 閉幕</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ルール -->
+  <section id="rules" class="section">
+    <div class="container">
+      <h2 class="section-title">ルール<span class="title-en">RULES</span></h2>
+      <div class="rules-grid">
+
+        <div class="rule-block">
+          <h3><span class="rule-num">01</span>予選</h3>
+          <ul>
+            <li>各チームは代表者<strong>3名のFS</strong>を提出</li>
+            <li>全提出動画を<strong>全審査員が主観で10点満点</strong>で採点</li>
+            <li>代表者3名の合計点がチームの得点。上位<strong>8チーム</strong>が決勝トーナメントへ進出</li>
+            <li>決勝トーナメントの組み合わせは予選順位によって自動決定</li>
+            <li>採点結果は公開。各々の点数と「審査のポイント」を見比べてFSを振り返ることができる</li>
+            <li><strong>★同点時:</strong> 各審査員が単独でつけた合計点で比較し、3人中2人からより高い点をつけられたチームを上位とする。この手法でも決まらない場合・複数同点の場合は審査員協議で確定</li>
+          </ul>
+        </div>
+
+        <div class="rule-block">
+          <h3><span class="rule-num">02</span>決勝トーナメント（1回戦・準決勝・決勝）</h3>
+          <ul>
+            <li>1マッチ = シングルス<strong>3試合</strong>で構成。<strong>2勝したチームの勝利</strong></li>
+            <li>3試合はそれぞれ<strong>別の審査員</strong>が担当。担当審査員はベスト8〜決勝まで全マッチの同じ試合番号のみを審査</li>
+            <li>各チームは試合ごとに審査員の考え（審査のポイント）に合った選手を選出</li>
+            <li>ラウンド終了後、審査員による各試合の<strong>総評コメント</strong>（勝敗の理由等）が公開される</li>
+            <li>優勝・準優勝チームが表彰（当サイトの歴代大会結果に掲載）</li>
+          </ul>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 審査員 -->
+  <section id="judges" class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">審査員<span class="title-en">JUDGES</span></h2>
+      <p class="section-lead">予選は全審査員が採点。決勝トーナメントは各審査員が担当試合を持ちます。</p>
+      <div class="judges-grid">
+
+        <!-- Judge 01: plum. -->
+        <div class="judge-card">
+          <div class="judge-number">Judge 01</div>
+          <h3 class="judge-name">plum.</h3>
+          <p class="judge-match">担当: 予選・決勝トーナメント 第1試合</p>
+          <a class="judge-twitter" href="https://x.com/ps65673665" target="_blank" rel="noopener">
+            𝕏 @ps65673665
+          </a>
+          <div class="judge-criteria">
+            <h4>評価軸: ペン回しの完成度と美学</h4>
+            <p class="judge-subhead">✅ プラスポイント</p>
+            <ul>
+              <li>全指がリズム良く・バランス良く使用されている</li>
+              <li>手の形を理解し、自分の強みを活かしている</li>
+              <li>回さない指にも意識がある工夫</li>
+              <li>速度に緩急がつく動き</li>
+              <li>決まった締め技</li>
+            </ul>
+            <p class="judge-subhead">❌ マイナスポイント</p>
+            <ul>
+              <li>背伸びしたカッコつけ</li>
+              <li>明らかな模倣</li>
+              <li>余力を残した締め</li>
+              <li>リズムの崩れ</li>
+            </ul>
+            <p class="judge-subhead">📷 環境・画質</p>
+            <ul>
+              <li>最低30万画素で十分</li>
+              <li>机上の固定Webカメラ推奨</li>
+              <li>殺風景な環境は不可 — 光と配置の工夫を評価</li>
+            </ul>
+            <a class="judge-criteria-link" href="https://jeb.penmawashi.com/d/1071-psjc2026" target="_blank" rel="noopener">全文を読む（JapEn Board）↗</a>
+          </div>
+        </div>
+
+        <!-- Judge 02: anarchy -->
+        <div class="judge-card">
+          <div class="judge-number">Judge 02</div>
+          <h3 class="judge-name">anarchy</h3>
+          <p class="judge-match">担当: 予選・決勝トーナメント 第2試合</p>
+          <a class="judge-twitter" href="https://x.com/anarchy_ps" target="_blank" rel="noopener">
+            𝕏 @anarchy_ps
+          </a>
+          <div class="judge-criteria">
+            <h4>評価軸: 「視覚的快感」の重視</h4>
+            <p class="judge-subhead">① 完成度・制御</p>
+            <ul>
+              <li>滑らかで円軌道の回転を高評価</li>
+              <li>勢いとかっこよさを与える手腕の使用を評価</li>
+              <li>突っかかり・不要な減速・不自然な力みは低評価</li>
+            </ul>
+            <p class="judge-subhead">② 構成</p>
+            <ul>
+              <li>FS全体に抑揚のある流れを構築</li>
+              <li>印象に残る見せ場を設定</li>
+              <li>緩急・リズム感・テーマ性を評価</li>
+              <li>単調な流れ・繰り返し・詰め込みすぎは低評価</li>
+            </ul>
+            <p class="judge-subhead">③ 独自性・新規性</p>
+            <ul>
+              <li>その人にしかできない個性的な回し方を評価</li>
+              <li>既視感のある技や雑な繋ぎは低評価</li>
+              <li>新しい動きでも見映えが悪ければ低評価</li>
+            </ul>
+            <p class="judge-subhead">④ 環境</p>
+            <ul>
+              <li>残像感や光の効果でペン回しが映える場合を高評価</li>
+              <li>傾いたアングル・コントラスト問題は低評価</li>
+              <li>画質や撮影場所の制限はなし</li>
+            </ul>
+            <a class="judge-criteria-link" href="https://jeb.penmawashi.com/d/1071-psjc2026" target="_blank" rel="noopener">全文を読む（JapEn Board）↗</a>
+          </div>
+        </div>
+
+        <!-- Judge 03: 葉脈 -->
+        <div class="judge-card">
+          <div class="judge-number">Judge 03</div>
+          <h3 class="judge-name">葉脈</h3>
+          <p class="judge-match">担当: 予選・決勝トーナメント 第3試合</p>
+          <a class="judge-twitter" href="https://x.com/Vein_vein_bomb" target="_blank" rel="noopener">
+            𝕏 @Vein_vein_bomb
+          </a>
+          <div class="judge-criteria">
+            <h4>評価軸: 「一目で個性と技術の伝わるFS」</h4>
+            <p class="judge-subhead">基本方針</p>
+            <ul>
+              <li>等速再生での第一印象に重みをつける</li>
+              <li>その後スロー再生で分析するが、第一印象を優先</li>
+              <li>「見て面白いか」が基準</li>
+            </ul>
+            <p class="judge-subhead">✅ 加点対象</p>
+            <ul>
+              <li>視覚的インパクトのある技/コンボ</li>
+              <li>特異的な構成</li>
+              <li>初見で読み取れる難度表現</li>
+            </ul>
+            <p class="judge-subhead">❌ 減点対象</p>
+            <ul>
+              <li>指遣い・回転速度・軌道の著しいブレ（意図的な崩しは除外）</li>
+              <li>極端に単調な構成（例: 20秒間2軸スプレッド継続など）</li>
+              <li>ペンや指の動きが見えない低画質・高ノイズ環境</li>
+            </ul>
+            <p class="judge-subhead">制限なし</p>
+            <ul>
+              <li>手以外の使用、立ち回り、三叉ペンなど異形ペン — いずれも可</li>
+            </ul>
+            <a class="judge-criteria-link" href="https://jeb.penmawashi.com/d/1071-psjc2026" target="_blank" rel="noopener">全文を読む（JapEn Board）↗</a>
+          </div>
+        </div>
+
+      </div>
+      <p class="judges-source">審査のポイント出典: <a href="https://jeb.penmawashi.com/d/1071-psjc2026" target="_blank" rel="noopener">JapEn Board — PSJC2026 審査のポイント</a></p>
+    </div>
+  </section>
+
+  <!-- エントリー -->
+  <section id="entry" class="section">
+    <div class="container">
+      <h2 class="section-title">出場チーム<span class="title-en">TEAMS</span></h2>
+      <p class="section-lead">エントリー締切: 2026年2月28日（土）&nbsp;／&nbsp;現在 <strong class="highlight">14チーム</strong> エントリー済み</p>
+
+      <div class="teams-grid">
+
+        <div class="team-card">
+          <div class="team-num">01</div>
+          <h3 class="team-name">PenKuruCrew</h3>
+          <p class="team-reps">🗾 PENMAWASHI</p>
+          <ul class="team-members">
+            <li>A</li><li>Meves</li><li>Spica</li>
+            <li>マワシズキ</li><li>MEL</li><li>Disk</li>
+          </ul>
+          <p class="team-comment">「頂にて待つ。 by.エベレスト」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">02</div>
+          <h3 class="team-name">Magical Painter</h3>
+          <p class="team-reps">🗾 若手G3スピナー</p>
+          <ul class="team-members">
+            <li>cross</li><li>shomon</li><li>Siki</li>
+            <li>Kur4</li><li>Haad</li><li>Lawa</li>
+          </ul>
+          <p class="team-comment">「記念参加ですが頑張ります！」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">03</div>
+          <h3 class="team-name">おふとんぬくぬく部</h3>
+          <p class="team-reps">🗾 炭酸</p>
+          <ul class="team-members">
+            <li>hexagon</li><li>HimaZin</li><li>0utlaw</li>
+            <li>HAYA</li><li>GorOri</li><li>aloe</li>
+          </ul>
+          <p class="team-comment">「おぼろげながら浮かんできたんです 優勝という2文字が」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">04</div>
+          <h3 class="team-name">6bund.</h3>
+          <p class="team-reps">🗾 日韓関係</p>
+          <ul class="team-members">
+            <li>N1716</li><li>klb</li><li>sututu</li>
+            <li>chillpan</li><li>Imbocd</li><li>Ca.</li>
+          </ul>
+          <p class="team-comment">「ペンスピ版ILLITじゃ我」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">05</div>
+          <h3 class="team-name">はのーず</h3>
+          <p class="team-reps">🗾 学生TikTok</p>
+          <ul class="team-members">
+            <li>はのー</li><li>きなこもっち</li><li>薬無</li>
+            <li>まっちゃ</li><li>そら</li><li>じゃみ</li>
+          </ul>
+          <p class="team-comment">「みんなで最後まで食らいつきます！」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">06</div>
+          <h3 class="team-name">Arounder30</h3>
+          <p class="team-reps">🗾 若かりし頃の思い出</p>
+          <ul class="team-members">
+            <li>aoneko</li><li>kiwi</li><li>los1Cel</li>
+            <li>Laku</li><li>obje</li><li>vampire</li>
+          </ul>
+          <p class="team-comment">「心を入れ替えてがんばります」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">07</div>
+          <h3 class="team-name">荻島の先鋭者たち</h3>
+          <p class="team-reps">🗾 次なる風</p>
+          <ul class="team-members">
+            <li>fzatt</li><li>Maple</li><li>Qzy</li>
+            <li>rote</li><li>pr</li><li>uuN</li>
+          </ul>
+          <p class="team-comment">「俺より強い奴に会いに行く」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">08</div>
+          <h3 class="team-name">MG+ feat.ペン回し向上委員会</h3>
+          <p class="team-reps">🗾 平成ペン回し</p>
+          <ul class="team-members">
+            <li>Airi</li><li>kAtts</li><li>Goat</li>
+            <li>kudo</li><li>Saria</li><li>Azuki</li>
+          </ul>
+          <p class="team-comment">「優勝一本狙い」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">09</div>
+          <h3 class="team-name">ペン回しチーム</h3>
+          <p class="team-reps">🗾 ペン回し</p>
+          <ul class="team-members">
+            <li>mi</li><li>Irelia</li><li>assessment</li>
+            <li>高田</li><li>ヨガタ</li><li>kiona</li>
+          </ul>
+          <p class="team-comment">「よろしくお願いします」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">10</div>
+          <h3 class="team-name">いちから</h3>
+          <p class="team-reps">🗾 一匹狼</p>
+          <ul class="team-members">
+            <li>IChika</li><li>sizugA</li><li>なれそ</li>
+            <li>mido</li><li>Lilax</li><li>logy</li>
+          </ul>
+          <p class="team-comment">「ワオーン！」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">11</div>
+          <h3 class="team-name">初星学園ペン回し同好会 黄金の風</h3>
+          <p class="team-reps">🗾 ブローノ・ブチャラティ, 篠澤広, 月村手毬, 姫崎莉波, 倉本千奈</p>
+          <ul class="team-members">
+            <li>ALPHAZ</li><li>kotone</li><li>Mita</li>
+            <li>yr</li><li>黎明</li><li>ドクグリツインテール。</li>
+          </ul>
+          <p class="team-comment">「君と出会い、夢に翔ける。」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">12</div>
+          <h3 class="team-name">旋転BOYZ</h3>
+          <p class="team-reps">🗾 学生</p>
+          <ul class="team-members">
+            <li>mui</li><li>Candy</li><li>Napier</li>
+            <li>Remless</li><li>aOEi</li><li>YoRozo</li>
+          </ul>
+          <p class="team-comment">「頑張って勝ちます！」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">13</div>
+          <h3 class="team-name">ボンボンドロップ</h3>
+          <p class="team-reps">🗾 ファミレス</p>
+          <ul class="team-members">
+            <li>エイジアスカ</li><li>オモえもん</li><li>Sanagi</li>
+            <li>mis</li><li>chell</li><li>Grayman</li>
+          </ul>
+          <p class="team-comment">「∘⋆․⊹․∘⟡˖*⊹」</p>
+        </div>
+
+        <div class="team-card">
+          <div class="team-num">14</div>
+          <h3 class="team-name">異端</h3>
+          <p class="team-reps">🗾 Experimental</p>
+          <ul class="team-members">
+            <li>ky*s O</li><li>ST</li><li>unknown</li>
+            <li>ag</li><li>Pong</li><li>Ence</li>
+          </ul>
+          <p class="team-comment">「宜しくお願い致します。」</p>
+        </div>
+
+        <!-- 15チーム目（締切2/28まで追加予定） -->
+        <div class="team-card team-card--pending">
+          <div class="team-num">15</div>
+          <h3 class="team-name">エントリー受付中</h3>
+          <p class="team-reps">締切: 2月28日（土）</p>
+          <p class="team-comment">参加チームを募集しています</p>
+        </div>
+
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-logo">PSJC<span>2026</span></p>
+      <p class="footer-text">PEN SPINNING JAPAN CUP 2026</p>
+      <div class="footer-links">
+        <a href="https://ps-japancup.mystrikingly.com/rule" target="_blank" rel="noopener">公式ルール</a>
+        <span class="footer-sep">|</span>
+        <a href="https://jeb.penmawashi.com/t/japan-cup" target="_blank" rel="noopener">大会進行スレッド（JapEn Board）</a>
+        <span class="footer-sep">|</span>
+        <a href="https://jeb.penmawashi.com/" target="_blank" rel="noopener">JapEn Board</a>
+      </div>
+      <p class="footer-sub">主催: <a href="https://jeb.penmawashi.com/" target="_blank" rel="noopener">JapEn Board</a></p>
+      <p class="footer-copy">このサイトは有志が趣味で制作した非公式ファンサイトです。大会運営とは無関係です。</p>
+    </div>
+  </footer>
+
+  <script src="videos.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
