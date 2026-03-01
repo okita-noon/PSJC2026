@@ -1413,15 +1413,39 @@ code {
   border-top: 3px solid var(--color-accent);
   border-radius: var(--radius);
   padding: 20px 20px 16px;
-  transition: transform var(--transition), border-color var(--transition);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
   position: relative;
   box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  cursor: pointer;
+}
+
+.team-card::after {
+  content: "▶ 動画を見る";
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  opacity: 0;
+  transition: opacity var(--transition);
+  letter-spacing: 0.05em;
 }
 
 .team-card:hover {
   transform: translateY(-3px);
   border-color: var(--color-accent);
   border-top-color: var(--color-accent);
+  box-shadow: 0 6px 20px rgba(192,40,14,0.12);
+}
+
+.team-card:hover::after {
+  opacity: 1;
+}
+
+.team-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 .team-card--pending {

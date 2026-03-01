@@ -253,4 +253,33 @@ observeAnims();
   });
 
   render();
+
+  // チームカードから動画フィルターへの連携
+  document.querySelectorAll('.team-card').forEach(card => {
+    const teamName = card.querySelector('.team-name')?.textContent?.trim();
+    if (!teamName) return;
+
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', `${teamName}の動画を見る`);
+
+    function goToTeamVideos() {
+      // チームフィルターボタンをクリック
+      const btn = document.querySelector(`.vg-team-btn[data-team="${CSS.escape(teamName)}"]`);
+      if (btn) {
+        teamFilters.querySelectorAll('.vg-team-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeTeam = teamName;
+        render();
+      }
+      // 動画セクションにスクロール
+      document.getElementById('videos')?.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    card.addEventListener('click', goToTeamVideos);
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); goToTeamVideos(); }
+    });
+  });
+
 })();
