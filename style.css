@@ -1453,6 +1453,14 @@ code {
   line-height: 1.5;
 }
 
+/* X投稿リンクセクション */
+.tweets-wrap {
+  text-align: center;
+}
+.tweets-wrap .section-lead {
+  margin-bottom: 28px;
+}
+
 /* 関連リンク行 */
 .entry-links-row {
   display: flex;
