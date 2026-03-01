@@ -132,20 +132,28 @@ observeAnims();
   });
 
   // フィルタリングして動画カードを描画
-  function render() {
-    grid.innerHTML = '';
-
-    const filtered = VIDEOS.filter(v => {
-      const matchRound = activeRound === 'all' || v.round === activeRound;
-      const matchTeam  = activeTeam  === 'all' || v.team  === activeTeam;
-      return matchRound && matchTeam;
-    });
-
-    if (filtered.length === 0) {
-      emptyMsg.style.display = 'block';
-      return;
-    }
+  function render(withSpinner = true) {
     emptyMsg.style.display = 'none';
+
+    // フィルター切り替え時はスピナーをはさんでから描画
+    if (withSpinner) {
+      grid.innerHTML = '<div class="vg-filter-spinner"><span></span></div>';
+    }
+
+    const doRender = () => {
+      grid.innerHTML = '';
+
+      const filtered = VIDEOS.filter(v => {
+        const matchRound = activeRound === 'all' || v.round === activeRound;
+        const matchTeam  = activeTeam  === 'all' || v.team  === activeTeam;
+        return matchRound && matchTeam;
+      });
+
+      if (filtered.length === 0) {
+        emptyMsg.style.display = 'block';
+        return;
+      }
+      emptyMsg.style.display = 'none';
 
     filtered.forEach(v => {
       const card = document.createElement('div');
@@ -232,10 +240,17 @@ observeAnims();
       }
 
       grid.appendChild(card);
-    });
+      });
 
-    // 新しく追加したカードにアニメ適用
-    observeAnims();
+      // 新しく追加したカードにアニメ適用
+      observeAnims();
+    };
+
+    if (withSpinner) {
+      setTimeout(doRender, 60);
+    } else {
+      doRender();
+    }
   }
 
   // ラウンドタブ
@@ -258,7 +273,7 @@ observeAnims();
     render();
   });
 
-  render();
+  render(false); // 初期表示はスピナーなし
 
   // チームカードから動画フィルターへの連携
   document.querySelectorAll('.team-card').forEach(card => {
@@ -289,3 +304,9 @@ observeAnims();
   });
 
 })();
+
+// ヒーローの「予選動画を見る」ボタン
+document.getElementById('heroYosenBtn')?.addEventListener('click', () => {
+  document.querySelector('.vg-tab[data-round="予選"]')?.click();
+  document.getElementById('videos')?.scrollIntoView({ behavior: 'smooth' });
+});
