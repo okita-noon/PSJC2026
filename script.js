@@ -165,21 +165,29 @@ observeAnims();
             <span class="vg-round-badge vg-round-${roundClass}">${v.round}</span>
             <p class="vg-player">${v.player}</p>
             <p class="vg-team">${v.team}</p>
-            <p class="vg-num">動画 ${v.num}</p>
           </div>
         `;
 
         card.querySelector('.vg-thumb').addEventListener('click', function () {
           const url = this.dataset.url;
-          this.outerHTML = `
-            <div class="vg-video-wrap">
-              <video controls autoplay playsinline>
-                <source src="${url}" type="video/mp4">
-                <source src="${url}" type="video/quicktime">
-                お使いのブラウザは動画再生に対応していません。
-              </video>
-            </div>
+          const wrap = document.createElement('div');
+          wrap.className = 'vg-video-wrap';
+          wrap.innerHTML = `
+            <div class="vg-spinner" aria-label="読み込み中"></div>
+            <video controls autoplay playsinline>
+              <source src="${url}" type="video/mp4">
+              <source src="${url}" type="video/quicktime">
+              お使いのブラウザは動画再生に対応していません。
+            </video>
           `;
+          this.replaceWith(wrap);
+          const video = wrap.querySelector('video');
+          const spinner = wrap.querySelector('.vg-spinner');
+          video.addEventListener('canplay', () => spinner.remove(), { once: true });
+          video.addEventListener('error', () => {
+            spinner.remove();
+            wrap.insertAdjacentHTML('afterbegin', '<p class="vg-error">動画を読み込めませんでした</p>');
+          }, { once: true });
         });
 
       } else if (v.videoId) {
@@ -194,7 +202,6 @@ observeAnims();
             <span class="vg-round-badge vg-round-${roundClass}">${v.round}</span>
             <p class="vg-player">${v.player}</p>
             <p class="vg-team">${v.team}</p>
-            <p class="vg-num">動画 ${v.num}</p>
           </div>
         `;
         card.querySelector('.vg-thumb').addEventListener('click', function () {
@@ -220,7 +227,6 @@ observeAnims();
             <span class="vg-round-badge vg-round-${roundClass}">${v.round}</span>
             <p class="vg-player">${v.player}</p>
             <p class="vg-team">${v.team}</p>
-            <p class="vg-num">動画 ${v.num}</p>
           </div>
         `;
       }
