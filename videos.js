@@ -1,43 +1,58 @@
 /**
- * PSJC2026 動画データ
- * =============================================
- * 動画が公開されたら videoId に YouTube の動画IDを入力してください。
- *
- * 例）URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
- *     → videoId: "dQw4w9WgXcQ"
- *
- * videoId が空文字 "" のときは「公開準備中」と表示されます。
- *
- * 追加方法:
- * { videoId: "動画ID", player: "HN", team: "チーム名", round: "予選", num: 1 },
- *
- * round: "予選" | "1回戦" | "準決勝" | "決勝"
- * num  : 動画番号（予選は1〜3、決勝Tは1〜6）
- * =============================================
+ * PSJC2026 動画データ（予選）
+ * url: Dropboxの直接ストリーミングURL
  */
 
 const VIDEOS = [
 
-  // =====================
   // 予選
-  // =====================
-
-  // --- チーム名を入力してください ---
-  // { videoId: "", player: "HN", team: "チーム名", round: "予選", num: 1 },
-  // { videoId: "", player: "HN", team: "チーム名", round: "予選", num: 2 },
-  // { videoId: "", player: "HN", team: "チーム名", round: "予選", num: 3 },
-
-  // =====================
-  // 決勝トーナメント
-  // =====================
-
-  // --- 1回戦 ---
-  // { videoId: "", player: "HN", team: "チーム名", round: "1回戦", num: 1 },
-
-  // --- 準決勝 ---
-  // { videoId: "", player: "HN", team: "チーム名", round: "準決勝", num: 1 },
-
-  // --- 決勝 ---
-  // { videoId: "", player: "HN", team: "チーム名", round: "決勝", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/ABb-piG0IrPOFwXxvhbzUxE/0utlaw_%E3%81%8A%E3%81%B5%E3%81%A8%E3%82%93%E3%81%AC%E3%81%8F%E3%81%AC%E3%81%8F%E9%83%A8.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "0utlaw", team: "おふとんぬくぬく部", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/ADx7o-uzhWZCJ-hTYJol1q0/A_PenKuruCrew.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "A", team: "PenKuruCrew", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AM8dGsXRskiGvg3j9jNaHc4/ag_%E7%95%B0%E7%AB%AF.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "ag", team: "異端", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AP5_HMa1wHVL5-3POwBcVOQ/Airi_MG%2B%20feat.%E3%83%9A%E3%83%B3%E5%9B%9E%E3%81%97%E5%90%91%E4%B8%8A%E5%A7%94%E5%93%A1%E4%BC%9A.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "Airi", team: "MG+ feat.ペン回し向上委員会", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/ALgB5dA6PARqdtqCXGDeLuM/aloe_%E3%81%8A%E3%81%B5%E3%81%A8%E3%82%93%E3%81%AC%E3%81%8F%E3%81%AC%E3%81%8F%E9%83%A8.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "aloe", team: "おふとんぬくぬく部", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AKLWHtEZm7rUR-LjZzbFnNc/arbr_%E3%81%82%EF%BC%886%EF%BC%89.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "arbr", team: "あ（6）", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/ALDIC8myfalsrJvf5b40ytU/assessment_%E3%83%9A%E3%83%B3%E5%9B%9E%E3%81%97%E3%83%81%E3%83%BC%E3%83%A0.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "assessment", team: "ペン回しチーム", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/ANenmvXXYowstInHFkgcmDs/cross_Magical%20Painter.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "cross", team: "Magical Painter", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AMHEohn2kC8k2dIbnTkChoM/Goat_MG%2Bfeat.%E3%83%9A%E3%83%B3%E5%9B%9E%E3%81%97%E5%90%91%E4%B8%8A%E5%A7%94%E5%93%A1%E4%BC%9A.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "Goat", team: "MG+ feat.ペン回し向上委員会", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AAV-BuuWCwhzR6vu8f5EwZI/GorOri_%E3%81%8A%E3%81%B5%E3%81%A8%E3%82%93%E3%81%AC%E3%81%8F%E3%81%AC%E3%81%8F%E9%83%A8.MOV?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "GorOri", team: "おふとんぬくぬく部", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/ACqhw5MOdRAjpg4MOgs2oTs/IChika_%E3%81%84%E3%81%A1%E3%81%8B%E3%82%89.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "IChika", team: "いちから", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AHkWR3CJU3-Qo07UATCJsto/Irelia_%E3%83%9A%E3%83%B3%E5%9B%9E%E3%81%97%E3%83%81%E3%83%BC%E3%83%A0.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "Irelia", team: "ペン回しチーム", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AORN-x8fCIen8eH4v-C-nQk/kAtts_MG%2B%20feat.%E3%83%9A%E3%83%B3%E5%9B%9E%E3%81%97%E5%90%91%E4%B8%8A%E5%A7%94%E5%93%A1%E4%BC%9A.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "kAtts", team: "MG+ feat.ペン回し向上委員会", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AGRDOrQkaSpOivwj8GyoM_8/kiwi_Arounder30.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "kiwi", team: "Arounder30", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AFXGJD0a9mX2NGm5EwmhT6U/klb_6bund..mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "klb", team: "6bund.", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AAqqMMhCOqOB21PJToBdM_Q/kotone_%E5%88%9D%E6%98%9F%E5%AD%A6%E5%9C%92.MP4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "kotone", team: "初星学園ペン回し同好会 黄金の風", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AKwSUuozOUNrO6eQGWr9FH8/logy_%E3%81%84%E3%81%A1%E3%81%8B%E3%82%89.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "logy", team: "いちから", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AHSpNvA2_MgYKv6Xto_hPq0/los1Cel_Arounder30.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "los1Cel", team: "Arounder30", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AH8lWOXz1NL0BRyVUJlueJ0/mi_%E3%83%9A%E3%83%B3%E5%9B%9E%E3%81%97%E3%83%81%E3%83%BC%E3%83%A0.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "mi", team: "ペン回しチーム", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AHioRDVXEOjCtXDIugqq2bA/mido_%E3%81%84%E3%81%A1%E3%81%8B%E3%82%89.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "mido", team: "いちから", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AOOVVKtd9jN2yOVaH7psSj0/mis_%E3%83%9C%E3%83%B3%E3%83%9C%E3%83%B3%E3%83%89%E3%83%AD%E3%83%83%E3%83%97.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "mis", team: "ボンボンドロップ", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AMFfooVurnc6FKpwIxlRRfc/Mita_%E5%88%9D%E6%98%9F%E5%AD%A6%E5%9C%92.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "Mita", team: "初星学園ペン回し同好会 黄金の風", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AIW9QRYYpWp0YE8Bk1tewqA/mui_%E6%97%8B%E8%BB%A2BOYZ.MP4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "mui", team: "旋転BOYZ", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AOGQhKWqaXNFKO91FAqLDHs/N1716_6bund..mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "N1716", team: "6bund.", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AMEq4RV3wJJzMumgS-hjUZU/Napier_%E6%97%8B%E8%BB%A2BOYZ.MP4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "Napier", team: "旋転BOYZ", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AAQfThcGB0w3BJoFhDUOnmM/obje_Arounder30.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "obje", team: "Arounder30", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AFaZIaQud0aGIqjZ35VoR7s/Qzy_%E8%8D%BB%E5%B3%B6%E3%81%AE%E5%85%88%E9%8B%AD%E8%80%85%E3%81%9F%E3%81%A1.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "Qzy", team: "荻島の先鋭者たち", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AJXD3PP8kAF8BZI6J4f1hyo/remles_%E6%97%8B%E8%BB%A2BOYZ.MP4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "remles", team: "旋転BOYZ", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AGAke3wfQLyVOm08O09O8-g/rote_%E8%8D%BB%E5%B3%B6%E3%81%AE%E5%85%88%E9%8B%AD%E8%80%85%E3%81%9F%E3%81%A1.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "rote", team: "荻島の先鋭者たち", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/ABcq8VmgwkN3vpT33cU9ax8/Ruribitaki_%E7%84%A1%E8%81%B7%E6%97%8B%E8%BB%A2.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "Ruribitaki", team: "無職旋転", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AEZmcTUDmvmRnlybF_y37j0/Sanagi_%E3%83%9C%E3%83%B3%E3%83%9C%E3%83%B3%E3%83%89%E3%83%AD%E3%83%83%E3%83%97.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "Sanagi", team: "ボンボンドロップ", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AD_hMaN-gou1f9mTSd2eRww/shomon_Magical%20Painter.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "shomon", team: "Magical Painter", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AC2wtYavNO5ursLLiio0NZg/Siki_Magical%20Painter.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "Siki", team: "Magical Painter", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AO-oz9rRy9IJATz9IGMtmZo/Spica_PenKuruCrew.MP4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "Spica", team: "PenKuruCrew", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/APx0QWv4XbgnMIT7wiGBEEw/ST_%E7%95%B0%E7%AB%AF.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "ST", team: "異端", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AHY4zPM8A9cKwhjfA2UUCqU/sunny1_%E7%84%A1%E8%81%B7%E6%97%8B%E8%BB%A2.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "sunny1", team: "無職旋転", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AHvJaJwE5CzRG67NigHfhlA/Sututu_6bund.MOV?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "Sututu", team: "6bund.", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AOYkdP3g0sv_xCyKGk3TZpU/unknown_%E7%95%B0%E7%AB%AF.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "unknown", team: "異端", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/ABS1i9s5GATpPLYkhB2iwFo/uuN_%E8%8D%BB%E5%B3%B6%E3%81%AE%E5%85%88%E9%8B%AD%E8%80%85%E3%81%9F%E3%81%A1.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "uuN", team: "荻島の先鋭者たち", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AF8032k_RXydCWKGyoE2PQ0/Wee9_%E7%84%A1%E8%81%B7%E6%97%8B%E8%BB%A2.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "Wee9", team: "無職旋転", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AGlohhSSXfc0xcGF4tAl0PE/%E3%81%8D%E3%81%AA%E3%81%93%E3%82%82%E3%81%A3%E3%81%A1_%E3%81%AF%E3%81%AE%E3%83%BC%E3%81%9A.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "きなこもっち", team: "はのーず", round: "予選", num: 1 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AEwST8BHAV4qC5KPD8WgnXs/%E3%81%9D%E3%81%8B%E3%81%84%E3%81%99_%E3%81%82%EF%BC%886%EF%BC%89.MP4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "そかいす", team: "あ（6）", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AAtelGOAlMSBrqNSKgK71eE/%E3%81%A0%E3%81%84%E3%81%9A_%E3%81%82%28%EF%BC%96%EF%BC%89.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "だいず", team: "あ（6）", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/ANorwlp_Ek9NJydX2UtDafw/%E3%81%AF%E3%81%AE%E3%83%BC_%E3%81%AF%E3%81%AE%E3%83%BC%E3%81%9A.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "はのー", team: "はのーず", round: "予選", num: 2 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AGI7fFj6eWW5_hWf7NzcL1k/%E3%82%AA%E3%83%A2%E3%81%88%E3%82%82%E3%82%93_%E3%83%9C%E3%83%B3%E3%83%9C%E3%83%B3%E3%83%89%E3%83%AD%E3%83%83%E3%83%97.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "オモえもん", team: "ボンボンドロップ", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/ABUCIQ8PlqtHutSMBJQS_nI/%E3%83%9E%E3%83%AF%E3%82%B7%E3%82%BA%E3%82%AD_PenKuruCrew.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "マワシズキ", team: "PenKuruCrew", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AHxa8DM-N0G4Y-9h_Y4sUEU/%E8%96%AC%E7%84%A1_%E3%81%AF%E3%81%AE%E3%83%BC%E3%81%9A.mov?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "薬無", team: "はのーず", round: "予選", num: 3 },
+  { url: "https://www.dropbox.com/scl/fo/626880glchcsvh236ldh8/AKy5sEiXpwVSyLMpMNN41Gk/%E9%BB%8E%E6%98%8E_%E5%88%9D%E6%98%9F%E5%AD%A6%E5%9C%92.mp4?rlkey=tr9cq8h1w3513pakgkwlx3fyw&raw=1", player: "黎明", team: "初星学園ペン回し同好会 黄金の風", round: "予選", num: 3 },
 
 ];

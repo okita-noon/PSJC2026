@@ -151,35 +151,62 @@ observeAnims();
       const card = document.createElement('div');
       card.className = 'vg-card';
 
-      if (v.videoId) {
-        // サムネイル + クリックで再生
+      const roundClass = v.round.replace(/\s/g, '');
+
+      if (v.url) {
+        // Dropbox動画: プレースホルダー表示 → クリックで<video>を展開
         card.innerHTML = `
-          <div class="vg-thumb" data-vid="${v.videoId}">
-            <img src="https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg"
-                 alt="${v.player} - ${v.round} 動画${v.num}"
-                 loading="lazy">
-            <div class="vg-play-overlay"><span class="vg-play-icon">▶</span></div>
+          <div class="vg-thumb vg-thumb-dropbox" data-url="${v.url}">
+            <div class="vg-play-overlay">
+              <span class="vg-play-icon">▶</span>
+            </div>
           </div>
           <div class="vg-info">
-            <span class="vg-round-badge vg-round-${v.round.replace(/\s/g,'')}">${v.round}</span>
+            <span class="vg-round-badge vg-round-${roundClass}">${v.round}</span>
             <p class="vg-player">${v.player}</p>
             <p class="vg-team">${v.team}</p>
             <p class="vg-num">動画 ${v.num}</p>
           </div>
         `;
 
-        // クリックでiframe（自動再生）に差し替え
+        card.querySelector('.vg-thumb').addEventListener('click', function () {
+          const url = this.dataset.url;
+          this.outerHTML = `
+            <div class="vg-video-wrap">
+              <video controls autoplay playsinline>
+                <source src="${url}" type="video/mp4">
+                <source src="${url}" type="video/quicktime">
+                お使いのブラウザは動画再生に対応していません。
+              </video>
+            </div>
+          `;
+        });
+
+      } else if (v.videoId) {
+        // YouTube動画（将来用）
+        card.innerHTML = `
+          <div class="vg-thumb" data-vid="${v.videoId}">
+            <img src="https://img.youtube.com/vi/${v.videoId}/mqdefault.jpg"
+                 alt="${v.player} - ${v.round} 動画${v.num}" loading="lazy">
+            <div class="vg-play-overlay"><span class="vg-play-icon">▶</span></div>
+          </div>
+          <div class="vg-info">
+            <span class="vg-round-badge vg-round-${roundClass}">${v.round}</span>
+            <p class="vg-player">${v.player}</p>
+            <p class="vg-team">${v.team}</p>
+            <p class="vg-num">動画 ${v.num}</p>
+          </div>
+        `;
         card.querySelector('.vg-thumb').addEventListener('click', function () {
           this.innerHTML = `
-            <iframe
-              src="https://www.youtube.com/embed/${v.videoId}?autoplay=1&rel=0"
+            <iframe src="https://www.youtube.com/embed/${v.videoId}?autoplay=1&rel=0"
               title="${v.player} - PSJC2026 ${v.round} 動画${v.num}"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen>
-            </iframe>
+              allowfullscreen></iframe>
           `;
         });
+
       } else {
         // 未公開プレースホルダー
         card.innerHTML = `
@@ -190,7 +217,7 @@ observeAnims();
             </div>
           </div>
           <div class="vg-info">
-            <span class="vg-round-badge vg-round-${v.round.replace(/\s/g,'')}">${v.round}</span>
+            <span class="vg-round-badge vg-round-${roundClass}">${v.round}</span>
             <p class="vg-player">${v.player}</p>
             <p class="vg-team">${v.team}</p>
             <p class="vg-num">動画 ${v.num}</p>

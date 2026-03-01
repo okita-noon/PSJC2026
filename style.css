@@ -1285,6 +1285,39 @@ code {
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
 }
 
+/* Dropbox動画プレースホルダー */
+.vg-thumb-dropbox {
+  background: #0d0d1a;
+}
+.vg-thumb-dropbox .vg-play-overlay {
+  opacity: 1;
+  background: rgba(0,0,0,0.45);
+}
+.vg-thumb-dropbox .vg-play-icon {
+  font-size: 2.8rem;
+  opacity: 0.9;
+  transition: transform var(--transition), opacity var(--transition);
+}
+.vg-thumb-dropbox:hover .vg-play-icon {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+/* Dropbox動画プレーヤー（再生中） */
+.vg-video-wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: #000;
+}
+.vg-video-wrap video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
 /* 未公開プレースホルダー */
 .vg-thumb-pending {
   cursor: default;
