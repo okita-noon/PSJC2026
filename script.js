@@ -295,3 +295,41 @@ document.getElementById('heroYosenBtn')?.addEventListener('click', () => {
   document.querySelector('.vg-tab[data-round="予選"]')?.click();
   document.getElementById('videos')?.scrollIntoView({ behavior: 'smooth' });
 });
+
+// ===========================
+// セクションアンカーリンク
+// ホバーで「#」が出現 → クリックでURLコピー
+// ===========================
+(function initSectionAnchors() {
+  function showToast(msg) {
+    const toast = document.createElement('div');
+    toast.className = 'copy-toast';
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    requestAnimationFrame(() => toast.classList.add('show'));
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    }, 1800);
+  }
+
+  document.querySelectorAll('section[id]').forEach(section => {
+    const h2 = section.querySelector('.section-title');
+    if (!h2) return;
+
+    const anchor = document.createElement('a');
+    anchor.href = `#${section.id}`;
+    anchor.className = 'section-anchor-link';
+    anchor.setAttribute('aria-label', 'このセクションへのリンクをコピー');
+    anchor.textContent = '#';
+
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const url = location.origin + location.pathname + '#' + section.id;
+      navigator.clipboard.writeText(url).then(() => showToast('リンクをコピーしました'));
+      history.replaceState(null, '', '#' + section.id);
+    });
+
+    h2.appendChild(anchor);
+  });
+})();

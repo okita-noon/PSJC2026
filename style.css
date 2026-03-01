@@ -330,6 +330,47 @@ body {
   opacity: 0.5;
 }
 
+.section-anchor-link {
+  font-size: 0.65em;
+  font-weight: 400;
+  font-family: monospace;
+  letter-spacing: 0;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.2s, color 0.2s;
+  flex-shrink: 0;
+  align-self: center;
+}
+.section-title:hover .section-anchor-link {
+  opacity: 1;
+}
+.section-anchor-link:hover {
+  color: var(--color-accent);
+}
+
+/* コピー通知トースト */
+.copy-toast {
+  position: fixed;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: rgba(15,15,15,0.88);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  z-index: 9999;
+  pointer-events: none;
+}
+.copy-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
 .title-en {
   font-size: 0.72rem;
   letter-spacing: 0.3em;
