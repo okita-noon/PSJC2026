@@ -1603,6 +1603,136 @@ code {
   line-height: 1.5;
 }
 
+/* チーム - 予選敗退 */
+.team-card--eliminated {
+  border-top-color: var(--color-border);
+  opacity: 0.5;
+}
+.team-card--eliminated::after {
+  display: none;
+}
+.team-card--eliminated:hover {
+  border-color: var(--color-border);
+  border-top-color: var(--color-border);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transform: none;
+  cursor: default;
+}
+
+/* チーム - 区分見出し */
+.teams-division-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+  padding-left: 4px;
+  letter-spacing: 0.05em;
+}
+.teams-division-title--elim {
+  color: var(--color-text-muted);
+  margin-top: 32px;
+}
+
+/* セクション注釈 */
+.section-note {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+.section-note a {
+  color: var(--color-accent);
+}
+
+/* ===========================
+   トーナメント対戦カード
+   =========================== */
+.bracket-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.bracket-match {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.bracket-match-header {
+  background: var(--color-accent);
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.bracket-teams {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+.bracket-team {
+  font-weight: 700;
+  font-size: 0.95rem;
+  flex: 1;
+  min-width: 0;
+}
+.bracket-seed {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-right: 4px;
+}
+.bracket-vs {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+.bracket-games {
+  padding: 12px 16px;
+}
+.bracket-game {
+  font-size: 0.85rem;
+  padding: 6px 0;
+  color: var(--color-text);
+  border-bottom: 1px dashed var(--color-border);
+}
+.bracket-game:last-child {
+  border-bottom: none;
+}
+.bracket-judge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  background: rgba(192,40,14,0.08);
+  padding: 1px 8px;
+  border-radius: 3px;
+  margin-right: 8px;
+  min-width: 60px;
+  text-align: center;
+}
+.bracket-source {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+.bracket-source a {
+  color: var(--color-accent);
+}
+
+@media (max-width: 600px) {
+  .bracket-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* X投稿リンクセクション */
 .tweets-wrap {
   text-align: center;
